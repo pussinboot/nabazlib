@@ -160,35 +160,3 @@ class Nabaztag:
         else:
             raise TypeException, "Invalid parameter in doChoreography (%s)" % choreography    
 
-if __name__ == '__main__':
-  test = Nabaztag('0019DB000619', '1173966344') # hank's nabaztag
-  # test = Nabaztag('0013D384985B', '1172754289') # jonathan's nabaztag
-  test.say("Thanks Hank! You rock!")
-  # tempo of 1/2 second
-  choreography1 = Choreography(2)
-  choreography1.addEarCommand(0, Choreography.EAR_LEFT, 90, Choreography.EAR_BACK)
-  choreography1.addEarCommand(0, Choreography.EAR_RIGHT, 90, Choreography.EAR_FRONT)
-  choreography1.addLedCommand(0, Choreography.LED_TOP, 0, 200, 0)
-  # do some "fantastic car"-like effect with the lights
-  seqCount = 2
-  tempoOffset = 0
-  while seqCount > 0:
-      choreography1.addLedCommand(0 + tempoOffset, Choreography.LED_LEFT, 255, 0, 0)
-      
-      choreography1.addLedCommand(1 + tempoOffset, Choreography.LED_LEFT, 120, 0, 0)
-      choreography1.addLedCommand(1 + tempoOffset, Choreography.LED_MIDDLE, 255, 0, 0)
-      
-      choreography1.addLedCommand(2 + tempoOffset, Choreography.LED_LEFT, 0, 0, 0)
-      choreography1.addLedCommand(2 + tempoOffset, Choreography.LED_MIDDLE, 120, 0, 0)
-      choreography1.addLedCommand(2 + tempoOffset, Choreography.LED_RIGHT, 255, 0, 0)
-      
-      choreography1.addLedCommand(3 + tempoOffset, Choreography.LED_MIDDLE, 255, 0, 0)
-      choreography1.addLedCommand(3 + tempoOffset, Choreography.LED_RIGHT, 120, 0, 0)
-      
-      choreography1.addLedCommand(4 + tempoOffset, Choreography.LED_LEFT, 255, 0, 0)
-      choreography1.addLedCommand(4 + tempoOffset, Choreography.LED_MIDDLE, 120, 0, 0)
-      choreography1.addLedCommand(4 + tempoOffset, Choreography.LED_RIGHT, 0, 0, 0)
-      
-      seqCount -= 1
-      tempoOffset += 5
-  test.doChoreography(choreography1)
